@@ -1,0 +1,82 @@
+create database bdMAGAZU;
+
+
+
+create table Clientes(
+    CPF CHAR(14) PRIMARY KEY NOT NULL
+    nome varchar(100),
+    endereco varchar(255)
+    telefone varchar(20),
+    email   varchar(255)
+
+);
+
+
+CREATE TABLE PRODUTO(
+    CODIGO VARCHAR(20) PRIMARY KEY NOT NULL
+    NOME VARCHAR(100),
+    DESCRICAO VARCHAR(255),
+    VALOR FLOAT
+);
+
+
+CREATE TABLE VENDA(
+    CODIGO_VEND INT PRIMARY KEY NOT NULL,
+    
+    /* CHAVE ESTRAGEIRA*/----
+    ID_FORNECEDOR VARCHAR(20),
+   ----------------------------
+
+
+    NOME_PROD VARCHAR(255)
+    
+    FOREIGN KEY (ID_FORNECEDOR)REFERENCES FORNECEDOR(CNPJ)
+
+);
+
+
+
+
+CREATE TABLE FORNECEDOR(
+    CNPJ VARCHAR(20) PRIMARY KEY NOT NULL
+    NOME VARCHAR(100),
+    ENDERECO VARCHAR(255),
+    TELFONE VARCHAR(20)
+);
+
+
+CREATE TABLE COMPRA(
+    ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    DATA CHAR(8),
+
+    CPF_CLI CHAR(20) NOT NULL , 
+    CODIGO_COMPRA INT NOT NULL,
+     FOREIGN KEY (CPF_CLI) REFERENCES Clientes(CPF)
+     FOREIGN KEY (CODIGO_COMPRA) REFERENCES PRODUTO(CODIGO_COMPRA)
+
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
